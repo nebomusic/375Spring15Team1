@@ -1,0 +1,15 @@
+Stat Tracker for Baseball
+
+Questions
+1. Which stats would you like to record?
+2. What would you like to do with these stats when the event done?
+3. Would this expand to include more than one sport?
+4. What is the benefit for an app like this?
+5. Who would be the target individual to use this app?
+
+App Requirements
+1. Record Stats
+	a. Keep team rosters with the ability to add, delete, and edit player attributes
+	b. Player Attributes: First Name, Last Name, Position, Height, Weight
+	c. Stats
+2. Develop Reports
