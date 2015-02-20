@@ -1,12 +1,20 @@
 package com.example.baseballstattracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends Activity {
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setContentView(R.layout.activity_main);
+	}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +40,22 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    public void handleClick(View v) {
+    	switch (v.getId()) {
+    		case R.id.buttonStart:
+    			Intent intentOne = new Intent(this, StartGame.class);
+    			startActivity(intentOne);
+    			break;
+    		case R.id.buttonEdit:
+    			Intent intentTwo = new Intent(this, EditTeam.class);
+    			startActivity(intentTwo);
+    			break;
+    		case R.id.buttonAbout:
+    			Intent intentThree = new Intent(this, About.class);
+    			startActivity(intentThree);
+    			break;
+    	}
     }
 }
