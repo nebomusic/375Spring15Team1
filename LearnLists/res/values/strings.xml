@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LearnLists</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string-array name = "flavor_array">
+        <item>None</item>
+        <item>Mocha</item>
+        <item>Vanilla</item>
+        <item>Caramel</item>
+    </string-array>
+    
+    <string-array name = "dairy_array">
+		<item>None</item>
+		<item>Half and Half</item>
+		<item>Skim</item>
+		<item>Soy</item>
+	</string-array>
+</resources>

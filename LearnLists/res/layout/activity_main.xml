@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TableLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.learnlists.MainActivity" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnHot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "btnHotClicked"
+            android:text="Hot" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnCoffee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "coffeeClicked"
+            android:text="Coffee" />
+
+        <Button
+            android:id="@+id/btnFrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "frapClicked"
+            android:text="Frappacho" />
+
+        <Button
+            android:id="@+id/btnExpres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "expresClicked"
+            android:text="Expresso" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnTall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "tallClicked"
+            android:text="Tall" />
+
+        <Button
+            android:id="@+id/btnGrande"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "grandeClicked"
+            android:text="Grande" />
+
+        <Button
+            android:id="@+id/btnVenti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "ventiClicked"
+            android:text="Venti" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+id/spinnerFlavor"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25" >
+
+        <Spinner
+            android:id="@+id/spinnerDairy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnAddDrink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "addDrinkClicked"
+            android:text="Add Drink" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick = "resetDrink"
+            android:text="Reset" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textDrinksAdded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/textCurrentDrink"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text = "TextView" />
+    </TableRow>
+
+</LinearLayout>
