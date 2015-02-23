@@ -9,6 +9,10 @@ import android.view.View;
 
 public class InGame extends Activity {
 
+	public class Tester {
+
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

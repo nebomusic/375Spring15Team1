@@ -1,6 +1,8 @@
 package com.example.baseballstattracker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -15,10 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class StartGame extends Activity {
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -29,7 +31,7 @@ public class StartGame extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_startgame);
-		
+
 	}
 
 	@Override
@@ -65,6 +67,17 @@ public class StartGame extends Activity {
 		
 	}
 	
+	public List getStartGameInfo() {
+		List <String> gamedata = new ArrayList <String> (0);
+		
+		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
+		String date = btnSelectDate.getText().toString();
+		gamedata.add(date);
+		
+		
+		return gamedata;
+	}
+	
 //Classes for Date and Time Pickers 
 	//from research from: http://developer.android.com/guide/topics/ui/controls/pickers.html
 	
@@ -73,7 +86,6 @@ public class StartGame extends Activity {
 		private int month;
 		private int day;
 		private int yr;
-		private Button btnSelectDate;
 		
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -89,19 +101,13 @@ public class StartGame extends Activity {
 		
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {	
-			btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
+			Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
 			yr = year;
 			month = monthOfYear;
 			day = dayOfMonth;
 			
 			btnSelectDate.setText(month + "/" + day + "/" + yr);
-			
-		}
-		
-		public String getDate() {
-			return String.valueOf(month + "/" + day + "/" + yr);
-		}
-		
+		}	
 	}
 	
 	//When btnSelectDate is clicked
@@ -114,7 +120,6 @@ public class StartGame extends Activity {
 		//Fields for date
 		private int hr;
 		private int min;
-		private Button btnSelectTime;
 
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -130,18 +135,12 @@ public class StartGame extends Activity {
 		
 		@Override
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-			btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
+			Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
 			hr = hourOfDay;
 			min = minute;
 			if (min > 10) {btnSelectTime.setText(hr + ":" + min);}
 			else {btnSelectTime.setText(hr + ":0" + min);}
 		}
-		
-		public String getTime() {
-			if (min > 10) {return String.valueOf(hr + ": " + min);}
-			else {return String.valueOf(hr + ": 0" + min);}
-		}
-
 	}
 	
 	//When btnSelectTime is clicked

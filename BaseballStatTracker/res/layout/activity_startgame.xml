@@ -13,7 +13,8 @@
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="#A6A6A6" >
 
         <Button
             android:id="@+id/buttonStartGameBack"
