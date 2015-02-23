@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.baseballstattracker.EditTeam" >
+    tools:context="com.example.baseballstattracker.InGame" >
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -16,10 +16,10 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/buttonStartGameBack"
+            android:id="@+id/buttonInGameBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="handleClick"
+            android:onClick = "handleClick"
             android:text="Back" />
 
     </TableRow>
