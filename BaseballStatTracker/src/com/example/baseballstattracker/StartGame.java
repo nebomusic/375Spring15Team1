@@ -9,17 +9,26 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class StartGame extends Activity {
+	
+	private Spinner spinnerSelectTeam;
+	private boolean isHome;
 	
 	@Override
 	protected void onResume() {
@@ -31,6 +40,13 @@ public class StartGame extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_startgame);
+		
+		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
+		
+		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
+				teamdata, android.R.layout.simple_spinner_dropdown_item); //teams being the list created under Team Manager
+		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerSelectTeam.setAdapter(teamAdapter);
 
 	}
 
@@ -53,6 +69,25 @@ public class StartGame extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	public void handleRadioClick(View v) {
+		boolean checked = ((RadioButton) v).isChecked();
+				
+		//Which button was clicked
+		switch(v.getId()) {
+			case R.id.radioHome:
+				if (checked) {
+					isHome = true;
+				}
+			break;
+					
+			case R.id.radioAway:
+				if (checked) {
+					isHome = false;
+				}
+			break;
+		}
+	}
+	
 	public void handleClick(View v) {
 		switch (v.getId()) {
 			case R.id.buttonStartGameBack:
@@ -69,12 +104,29 @@ public class StartGame extends Activity {
 	
 	public List getStartGameInfo() {
 		List <String> gamedata = new ArrayList <String> (0);
+		//Add Team - 0
+		String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
+		gamedata.add(team);
 		
+		//Add Home or Away - 1
+		if (isHome == true) {gamedata.add("Home");}
+		else {gamedata.add("Away");}
+				
+		//Add Date - 2 
 		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
 		String date = btnSelectDate.getText().toString();
-		gamedata.add(date);
+		gamedata.add(date); 
 		
+		//Add Time - 3
+		Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
+		String time = btnSelectTime.getText().toString();
+		gamedata.add(time);
 		
+		//Add Location - 4
+		EditText editLocation = (EditText)findViewById(R.id.editLocation);
+		String location  = editLocation.getText().toString();
+		gamedata.add(location);
+			
 		return gamedata;
 	}
 	
@@ -107,6 +159,14 @@ public class StartGame extends Activity {
 			day = dayOfMonth;
 			
 			btnSelectDate.setText(month + "/" + day + "/" + yr);
+			
+			//Show Toast
+			Context context = getApplicationContext();
+			CharSequence text = "Date Selected";
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
 		}	
 	}
 	
@@ -114,6 +174,7 @@ public class StartGame extends Activity {
 	public void showDatePickerDialog(View v) {
 		DialogFragment newFragment = new DatePickerFragment();
 		newFragment.show(getFragmentManager(), "datePicker");
+		
 	}
 	
 	public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
@@ -140,6 +201,14 @@ public class StartGame extends Activity {
 			min = minute;
 			if (min > 10) {btnSelectTime.setText(hr + ":" + min);}
 			else {btnSelectTime.setText(hr + ":0" + min);}
+
+			//Show Toast
+			Context context = getApplicationContext();
+			CharSequence text = "Time Selected";
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
 		}
 	}
 	
