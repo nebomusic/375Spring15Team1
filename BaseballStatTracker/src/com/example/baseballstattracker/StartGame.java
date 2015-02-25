@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,25 +23,69 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class StartGame extends Activity {
 	
+	//Fields for Start Game
 	private Spinner spinnerSelectTeam;
 	private boolean isHome;
+	public List <String> gamedata;
+	
+	//Fields for In Game
+	private Button btnInGameBack;
+	private TextView textTeam;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_startgame);
+	
+		//Start Game XML
+		//Populate GameData List
+		gamedata = new ArrayList <String> (0);
+		//Add Team - 0
+		String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
+		gamedata.add(team);
+				
+		//Add Home or Away - 1
+		if (isHome == true) {gamedata.add("Home");}
+		else {gamedata.add("Away");}
+						
+		//Add Date - 2 
+		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
+		String date = btnSelectDate.getText().toString();
+		gamedata.add(date); 
+				
+		//Add Time - 3
+		Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
+		String time = btnSelectTime.getText().toString();
+		gamedata.add(time);
+				
+		//Add Location - 4
+		EditText editLocation = (EditText)findViewById(R.id.editLocation);
+		String location  = editLocation.getText().toString();
+		gamedata.add(location);
 		
+		//Spinner
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
 		
-		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this,
-        		R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
+				R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
         teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSelectTeam.setAdapter(teamAdapter);
+        
+        
+        
+        //In Game XML
+        btnInGameBack = (Button)findViewById(R.id.buttonInGameBack);
+        textTeam = (TextView)findViewById(R.id.textTeam);
+        
+        //Set Top Text to the current team
+      	textTeam = (TextView)findViewById(R.id.textTeam);
+      	textTeam.setText(team);
 	}
 
 	@Override
@@ -90,38 +135,16 @@ public class StartGame extends Activity {
 				startActivity(intentOne);
 				break;
 			case R.id.buttonStartGame:
-				Intent intentTwo = new Intent(this, InGame.class);
-				startActivity(intentTwo);
+				setContentView(R.layout.activity_in_game);			
+				break;
+			case R.id.buttonInGameBack:
+				setContentView(R.layout.activity_startgame);
 				break;
 		}
 		
 	}
 	
-	public List getStartGameInfo() {
-		List <String> gamedata = new ArrayList <String> (0);
-		//Add Team - 0
-		String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
-		gamedata.add(team);
-		
-		//Add Home or Away - 1
-		if (isHome == true) {gamedata.add("Home");}
-		else {gamedata.add("Away");}
-				
-		//Add Date - 2 
-		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
-		String date = btnSelectDate.getText().toString();
-		gamedata.add(date); 
-		
-		//Add Time - 3
-		Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
-		String time = btnSelectTime.getText().toString();
-		gamedata.add(time);
-		
-		//Add Location - 4
-		EditText editLocation = (EditText)findViewById(R.id.editLocation);
-		String location  = editLocation.getText().toString();
-		gamedata.add(location);
-			
+	public List getStartGameInfo() {		
 		return gamedata;
 	}
 	
@@ -211,5 +234,14 @@ public class StartGame extends Activity {
 	public void showTimePickerDialog(View v) {
 		DialogFragment newFragment = new TimePickerFragment();
 		newFragment.show(getFragmentManager(), "timePicker");
+	}
+	
+	public class InGame extends DialogFragment {
+		
+	}
+	
+	public void showInGameDialog(View v) {
+		DialogFragment newFragment = new DialogFragment();
+		newFragment.show(getFragmentManager(), "inGame");		
 	}
 }
