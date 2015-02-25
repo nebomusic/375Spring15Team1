@@ -6,13 +6,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class InGame extends Activity {
+	
+	private TextView textTeam;
+	private StartGame currentgame;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_in_game);
+		//Set Top Text to the current team
+		textTeam = (TextView)findViewById(R.id.textTeam);
+		String team = (String) currentgame.getStartGameInfo().get(0);
+		textTeam.setText(team);
+		
+		
 	}
 
 	@Override

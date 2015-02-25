@@ -31,23 +31,16 @@ public class StartGame extends Activity {
 	private boolean isHome;
 	
 	@Override
-	protected void onResume() {
-		super.onResume();
-		setContentView(R.layout.activity_startgame);
-	}
-
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_startgame);
 		
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
 		
-		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
-				teamdata, android.R.layout.simple_spinner_dropdown_item); //teams being the list created under Team Manager
-		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerSelectTeam.setAdapter(teamAdapter);
-
+		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this,
+        		R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+        teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSelectTeam.setAdapter(teamAdapter);
 	}
 
 	@Override
@@ -69,21 +62,23 @@ public class StartGame extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setContentView(R.layout.activity_startgame);
+	}
+	
 	public void handleRadioClick(View v) {
 		boolean checked = ((RadioButton) v).isChecked();
 				
 		//Which button was clicked
 		switch(v.getId()) {
 			case R.id.radioHome:
-				if (checked) {
-					isHome = true;
-				}
+				if (checked) {isHome = true;}
 			break;
 					
 			case R.id.radioAway:
-				if (checked) {
-					isHome = false;
-				}
+				if (checked) {isHome = false;}
 			break;
 		}
 	}
