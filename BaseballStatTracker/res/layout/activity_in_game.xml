@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Team Name"
+            android:text="Team Name - Home/Away"
             android:textSize="25dp" />
 
     </TableRow>
@@ -45,6 +45,15 @@
         android:id="@+id/tableRow3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textGameInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity = "center"
+            android:text = "Date, Time, Location"
+            android:textSize = "15dp"/>
+
     </TableRow>
 
     <TableRow

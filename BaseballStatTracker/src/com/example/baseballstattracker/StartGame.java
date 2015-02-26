@@ -37,6 +37,7 @@ public class StartGame extends Activity {
 	//Fields for In Game
 	private Button btnInGameBack;
 	private TextView textTeam;
+	private TextView textGameInfo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,8 @@ public class StartGame extends Activity {
 		//Populate GameData List
 		gamedata = new ArrayList <String> (0);
 		//Add Team - 0
-		String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
-		gamedata.add(team);
+		//String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
+		//gamedata.add(team);
 				
 		//Add Home or Away - 1
 		if (isHome == true) {gamedata.add("Home");}
@@ -67,25 +68,18 @@ public class StartGame extends Activity {
 		//Add Location - 4
 		EditText editLocation = (EditText)findViewById(R.id.editLocation);
 		String location  = editLocation.getText().toString();
-		gamedata.add(location);
-		
-		//Spinner
-		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
-		
-		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
-				R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
-        teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSelectTeam.setAdapter(teamAdapter);
-        
+		gamedata.add(location);  
         
         
         //In Game XML
         btnInGameBack = (Button)findViewById(R.id.buttonInGameBack);
         textTeam = (TextView)findViewById(R.id.textTeam);
         
-        //Set Top Text to the current team
+        //Set Top Text to the current game info
       	textTeam = (TextView)findViewById(R.id.textTeam);
-      	textTeam.setText(team);
+      	//textTeam.setText(team + gamedata.get(1).toString());
+      	textGameInfo = (TextView)findViewById(R.id.textGameInfo);
+      	//textGameInfo.setText(btnSelectDate.getText() + " at " + btnSelectTime.getText() + " at "+ editLocation.getText());
 	}
 
 	@Override
@@ -111,6 +105,14 @@ public class StartGame extends Activity {
 	protected void onResume() {
 		super.onResume();
 		setContentView(R.layout.activity_startgame);
+		
+		//Spinner
+		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
+				
+		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
+				R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerSelectTeam.setAdapter(teamAdapter);
 	}
 	
 	public void handleRadioClick(View v) {
@@ -138,7 +140,7 @@ public class StartGame extends Activity {
 				setContentView(R.layout.activity_in_game);			
 				break;
 			case R.id.buttonInGameBack:
-				setContentView(R.layout.activity_startgame);
+				//Call InGame
 				break;
 		}
 		
