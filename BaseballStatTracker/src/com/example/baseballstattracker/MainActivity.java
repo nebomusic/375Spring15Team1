@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
     			startActivity(intentOne);
     			break;
     		case R.id.buttonEdit:
-    			Intent intentTwo = new Intent(this, EditTeam.class);
+    			Intent intentTwo = new Intent(this, Manager.class);
     			startActivity(intentTwo);
     			break;
     		case R.id.buttonAbout:
