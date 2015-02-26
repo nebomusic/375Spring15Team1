@@ -16,5 +16,6 @@
     </string-array>
 
     <string name="title_activity_manager">Manager</string>
+    <string name="title_activity_new_team">NewTeam</string>
 
 </resources>

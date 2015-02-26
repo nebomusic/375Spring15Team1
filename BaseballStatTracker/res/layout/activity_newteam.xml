@@ -8,19 +8,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.baseballstattracker.Manager" >
+    tools:context="com.example.baseballstattracker.NewTeam" >
 
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/buttonAdd"
+        <EditText
+            android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="handleClick"
-            android:text="Create A New Team" />
+            android:hint="Enter Team Name"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
 
     </TableRow>
 
@@ -30,25 +33,11 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/buttonEdit"
+            android:id="@+id/buttonCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="handleClick"
-            android:text="Edit An Existing Team" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/buttonRemove"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="handleClick"
-            android:text="Delete An Existing Team" />
+            android:text="Create Team" />
 
     </TableRow>
 

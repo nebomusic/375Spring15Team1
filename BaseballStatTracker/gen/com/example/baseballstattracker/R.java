@@ -29,24 +29,25 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
-        public static final int action_settings=0x7f090018;
+        public static final int action_settings=0x7f090019;
         public static final int buttonAbout=0x7f09000f;
         public static final int buttonAdd=0x7f090006;
+        public static final int buttonCreate=0x7f090010;
         public static final int buttonEdit=0x7f09000e;
         public static final int buttonInGameBack=0x7f09000a;
         public static final int buttonRemove=0x7f090007;
-        public static final int buttonSelectDate=0x7f090014;
-        public static final int buttonSelectTime=0x7f090015;
+        public static final int buttonSelectDate=0x7f090015;
+        public static final int buttonSelectTime=0x7f090016;
         public static final int buttonStart=0x7f09000d;
-        public static final int buttonStartGame=0x7f090017;
+        public static final int buttonStartGame=0x7f090018;
         public static final int buttonStartGameBack=0x7f090002;
         public static final int buttonTrade=0x7f090009;
-        public static final int editLocation=0x7f090016;
+        public static final int editLocation=0x7f090017;
         public static final int editText1=0x7f090004;
-        public static final int radioAway=0x7f090013;
-        public static final int radioGroup1=0x7f090011;
-        public static final int radioHome=0x7f090012;
-        public static final int spinnerSelectTeam=0x7f090010;
+        public static final int radioAway=0x7f090014;
+        public static final int radioGroup1=0x7f090012;
+        public static final int radioHome=0x7f090013;
+        public static final int spinnerSelectTeam=0x7f090011;
         public static final int tableRow1=0x7f090001;
         public static final int tableRow2=0x7f090003;
         public static final int tableRow3=0x7f090005;
@@ -60,7 +61,8 @@ public final class R {
         public static final int activity_in_game=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_manager=0x7f030004;
-        public static final int activity_startgame=0x7f030005;
+        public static final int activity_newteam=0x7f030005;
+        public static final int activity_startgame=0x7f030006;
     }
     public static final class menu {
         public static final int about=0x7f080000;
@@ -68,7 +70,8 @@ public final class R {
         public static final int in_game=0x7f080002;
         public static final int main=0x7f080003;
         public static final int manager=0x7f080004;
-        public static final int start_game=0x7f080005;
+        public static final int new_team=0x7f080005;
+        public static final int start_game=0x7f080006;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -78,6 +81,7 @@ public final class R {
         public static final int title_activity_edit_team=0x7f050004;
         public static final int title_activity_in_game=0x7f050006;
         public static final int title_activity_manager=0x7f050007;
+        public static final int title_activity_new_team=0x7f050008;
         public static final int title_activity_start_game=0x7f050003;
     }
     public static final class style {

@@ -1,33 +1,23 @@
 package com.example.baseballstattracker;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
-public class Manager extends Activity {
+public class NewTeam extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_manager);
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		setContentView(R.layout.activity_manager);
+		setContentView(R.layout.activity_newteam);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.manager, menu);
+		getMenuInflater().inflate(R.menu.new_team, menu);
 		return true;
 	}
 
@@ -44,29 +34,6 @@ public class Manager extends Activity {
 	}
 	
 	public void handleClick(View v) {
-		switch (v.getId()) {
-			case R.id.buttonAdd:
-				setContentView(R.layout.activity_newteam);
-				break;
-			case R.id.buttonEdit:
-				Intent intentOne = new Intent(this, EditTeam.class);
-				startActivity(intentOne);
-				break;
-		}
+		setContentView(R.layout.activity_editteam);
 	}
-	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
