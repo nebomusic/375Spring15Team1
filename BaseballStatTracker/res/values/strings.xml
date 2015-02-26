@@ -8,11 +8,13 @@
     <string name="title_activity_edit_team">Edit Team</string>
     <string name="title_activity_about">About</string>
     <string name="title_activity_in_game">InGame</string>
-    
-    <string-array name = "team_array">
+
+    <string-array name="team_array">
         <item>Marist</item>
         <item>Pius</item>
         <item>Lovett</item>
     </string-array>
+
+    <string name="title_activity_manager">Manager</string>
 
 </resources>
