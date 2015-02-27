@@ -45,41 +45,20 @@ public class StartGame extends Activity {
 		setContentView(R.layout.activity_startgame);
 	
 		//Start Game XML
-		//Populate GameData List
-		gamedata = new ArrayList <String> (0);
-		//Add Team - 0
-		//String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
-		//gamedata.add(team);
-				
-		//Add Home or Away - 1
-		if (isHome == true) {gamedata.add("Home");}
-		else {gamedata.add("Away");}
+		//Populate Spinner
+		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
 						
-		//Add Date - 2 
-		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
-		String date = btnSelectDate.getText().toString();
-		gamedata.add(date); 
-				
-		//Add Time - 3
-		Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
-		String time = btnSelectTime.getText().toString();
-		gamedata.add(time);
-				
-		//Add Location - 4
-		EditText editLocation = (EditText)findViewById(R.id.editLocation);
-		String location  = editLocation.getText().toString();
-		gamedata.add(location);  
-        
-        
-        //In Game XML
-        btnInGameBack = (Button)findViewById(R.id.buttonInGameBack);
-        textTeam = (TextView)findViewById(R.id.textTeam);
-        
-        //Set Top Text to the current game info
-      	textTeam = (TextView)findViewById(R.id.textTeam);
-      	//textTeam.setText(team + gamedata.get(1).toString());
-      	textGameInfo = (TextView)findViewById(R.id.textGameInfo);
-      	//textGameInfo.setText(btnSelectDate.getText() + " at " + btnSelectTime.getText() + " at "+ editLocation.getText());
+		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
+						R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerSelectTeam.setAdapter(teamAdapter);
+		
+		//Populate List with Blank Data
+		gamedata = new ArrayList <String> (0);
+		for (int i=0;i<=4;i++) {
+			gamedata.add("");
+		}
+		
 	}
 
 	@Override
@@ -137,19 +116,57 @@ public class StartGame extends Activity {
 				startActivity(intentOne);
 				break;
 			case R.id.buttonStartGame:
-				setContentView(R.layout.activity_in_game);			
-				break;
+				setGameInfo();
+				setContentView(R.layout.activity_main);
+				launchInGame();
 			case R.id.buttonInGameBack:
-				//Call InGame
+				setContentView(R.layout.activity_startgame);
+				onResume();
 				break;
 		}
 		
 	}
 	
-	public List getStartGameInfo() {		
-		return gamedata;
+	public void setGameInfo() {
+		//Populate GameData List
+			gamedata = new ArrayList <String> (0);
+			//Add Team - 0
+			String team = String.valueOf(spinnerSelectTeam.getSelectedItem());
+			gamedata.add(team);
+						
+			//Add Home or Away - 1
+			if (isHome == true) {gamedata.add("Home");}
+			else {gamedata.add("Away");}
+								
+			//Add Date - 2 
+			Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
+			String date = btnSelectDate.getText().toString();
+			gamedata.add(date); 
+					
+			//Add Time - 3
+			Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
+			String time = btnSelectTime.getText().toString();
+			gamedata.add(time);
+						
+			//Add Location - 4
+			EditText editLocation = (EditText)findViewById(R.id.editLocation);
+			String location  = editLocation.getText().toString();
+			gamedata.add(location);
 	}
 	
+	public void launchInGame() {
+		//In Game XML
+        btnInGameBack = (Button)findViewById(R.id.buttonInGameBack);
+        textTeam = (TextView)findViewById(R.id.textTeam);
+                
+        //Set Top Text to the current game info
+      	textTeam = (TextView)findViewById(R.id.textTeam);
+      	textTeam.setText(gamedata.get(0).toString() + " "+ gamedata.get(1).toString());
+      	textGameInfo = (TextView)findViewById(R.id.textGameInfo);
+      	textGameInfo.setText(gamedata.get(2).toString() + " at " + gamedata.get(3).toString() + " at "+ gamedata.get(4).toString());
+
+	}
+		
 //Classes for Date and Time Pickers 
 	//from research from: http://developer.android.com/guide/topics/ui/controls/pickers.html
 	
