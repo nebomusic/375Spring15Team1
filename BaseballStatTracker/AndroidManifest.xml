@@ -42,6 +42,10 @@
             android:name=".Manager"
             android:label="@string/title_activity_manager" >
         </activity>
+        <activity
+            android:name=".NewTeam"
+            android:label="@string/title_activity_new_team" >
+        </activity>
     </application>
 
 </manifest>

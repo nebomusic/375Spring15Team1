@@ -8,26 +8,37 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.baseballstattracker.About" >
+    tools:context="com.example.baseballstattracker.NewTeam" >
 
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/buttonStartGameBack"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="handleClick"
-            android:text="Back" />
+            android:hint="Enter Team Name"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
 
     </TableRow>
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Created by Devin Summers and John Hammer" />
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="handleClick"
+            android:text="Create Team" />
+
+    </TableRow>
 
 </LinearLayout>

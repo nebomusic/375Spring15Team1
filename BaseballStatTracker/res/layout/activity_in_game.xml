@@ -1,6 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/RelativeLayout1"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,11 +11,9 @@
     tools:context="com.example.baseballstattracker.InGame" >
 
     <TableRow
-        android:id="@+id/tableRow1"
+        android:id="@+id/tableRow4"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:background="#CCCCCC" >
 
         <Button
@@ -28,11 +26,9 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow2"
+        android:id="@+id/tableRow5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow1"
         android:background="#CCCCCC" >
 
         <TextView
@@ -45,11 +41,9 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow3"
+        android:id="@+id/tableRow6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow2"
         android:background="#CCCCCC" >
 
         <TextView
@@ -62,11 +56,9 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow3" >
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/textNAME"
@@ -76,41 +68,37 @@
 
         <Spinner
             android:id="@+id/spinnerPlayer"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
         <ToggleButton
             android:id="@+id/toggleAddSub"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:checked="true"
-            android:textOff="-"
-            android:textOn="+"
-            android:textSize="30dp" />
+            android:textOff="+"
+            android:textOn="-"
+            android:textSize="25dp" />
+
     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow5"
-        android:layout_width="match_parent"
+    <Space
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow4" >
+        android:layout_gravity="fill_vertical" />
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AB" />
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton" />
-
-        <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
@@ -121,87 +109,6 @@
             android:layout_height="wrap_content"
             android:text="Button" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </TableRow>
 
-    <TableRow
-        android:id="@+id/tableRow6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow5" >
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow6" >
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow7" >
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow8" >
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow9" >
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow10" >
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableRow11" >
-    </TableRow>
-
-</RelativeLayout>
+</LinearLayout>
