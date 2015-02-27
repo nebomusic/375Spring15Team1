@@ -31,13 +31,14 @@ public class StartGame extends Activity {
 	
 	//Fields for Start Game
 	private Spinner spinnerSelectTeam;
-	private boolean isHome;
+	private boolean isHome = true;
 	public List <String> gamedata;
 	
 	//Fields for In Game
 	private Button btnInGameBack;
 	private TextView textTeam;
 	private TextView textGameInfo;
+	private Spinner spinnerPlayer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,13 @@ public class StartGame extends Activity {
 		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerSelectTeam.setAdapter(teamAdapter);
 		
-		//Populate List with Blank Data
+		//Populate List with Generic Data
 		gamedata = new ArrayList <String> (0);
-		for (int i=0;i<=4;i++) {
-			gamedata.add("");
-		}
-		
+		gamedata.add("Team");
+		gamedata.add("Home");
+		gamedata.add("Select Date");
+		gamedata.add("Select Time");
+		gamedata.add("Enter Location");
 	}
 
 	@Override
@@ -92,6 +94,15 @@ public class StartGame extends Activity {
 				R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
 		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerSelectTeam.setAdapter(teamAdapter);
+			
+		//Fill Spots with Prior Data
+		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
+		Button btnSelectTime = (Button)findViewById(R.id.buttonSelectTime);
+		EditText editLocation = (EditText)findViewById(R.id.editLocation);
+		btnSelectDate.setText(gamedata.get(2).toString());
+		btnSelectTime.setText(gamedata.get(3).toString());
+		editLocation.setText(gamedata.get(4).toString());
+		
 	}
 	
 	public void handleRadioClick(View v) {
@@ -115,13 +126,14 @@ public class StartGame extends Activity {
 				Intent intentOne = new Intent(this, MainActivity.class);
 				startActivity(intentOne);
 				break;
-			case R.id.buttonStartGame:
-				setGameInfo();
-				setContentView(R.layout.activity_main);
-				launchInGame();
 			case R.id.buttonInGameBack:
 				setContentView(R.layout.activity_startgame);
 				onResume();
+				break;
+			case R.id.buttonInGameStart:
+				setGameInfo();
+				setContentView(R.layout.activity_in_game);
+				launchInGame();
 				break;
 		}
 		
@@ -159,11 +171,22 @@ public class StartGame extends Activity {
         btnInGameBack = (Button)findViewById(R.id.buttonInGameBack);
         textTeam = (TextView)findViewById(R.id.textTeam);
                 
-        //Set Top Text to the current game info
+        //Set the First Line to the current game info
       	textTeam = (TextView)findViewById(R.id.textTeam);
-      	textTeam.setText(gamedata.get(0).toString() + " "+ gamedata.get(1).toString());
+      	String firstLine = gamedata.get(0).toString() + " - " + gamedata.get(1).toString();
+      	textTeam.setText(firstLine);
+        //Set the Second Line to the current game info
       	textGameInfo = (TextView)findViewById(R.id.textGameInfo);
-      	textGameInfo.setText(gamedata.get(2).toString() + " at " + gamedata.get(3).toString() + " at "+ gamedata.get(4).toString());
+      	String secondLine = gamedata.get(2).toString() + " at " + gamedata.get(3).toString() + " at "+ gamedata.get(4).toString();
+      	textGameInfo.setText(secondLine);
+      	
+      //In Game Player Spinner
+      spinnerPlayer = (Spinner)findViewById(R.id.spinnerPlayer);
+      				
+      ArrayAdapter<CharSequence> playerAdapter = ArrayAdapter.createFromResource(this, 
+      			R.array.player_array, android.R.layout.simple_spinner_dropdown_item); 
+      playerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      spinnerPlayer.setAdapter(playerAdapter);
 
 	}
 		
@@ -253,14 +276,5 @@ public class StartGame extends Activity {
 	public void showTimePickerDialog(View v) {
 		DialogFragment newFragment = new TimePickerFragment();
 		newFragment.show(getFragmentManager(), "timePicker");
-	}
-	
-	public class InGame extends DialogFragment {
-		
-	}
-	
-	public void showInGameDialog(View v) {
-		DialogFragment newFragment = new DialogFragment();
-		newFragment.show(getFragmentManager(), "inGame");		
 	}
 }

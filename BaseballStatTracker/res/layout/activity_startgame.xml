@@ -66,14 +66,14 @@
 
         <Button
             android:id="@+id/buttonSelectDate"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:onClick = "showDatePickerDialog"
             android:text="Select Date" />
 
         <Button
             android:id="@+id/buttonSelectTime"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:onClick = "showTimePickerDialog"
             android:text="Select Time" />
@@ -87,7 +87,7 @@
 
         <EditText
             android:id="@+id/editLocation"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Enter Location" >
@@ -98,12 +98,12 @@
     </TableRow>
 
     <TableRow
-        android:id="@+id/tableRow5"
+        android:id="@+id/tableRow6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/buttonStartGame"
+            android:id="@+id/buttonInGameStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="handleClick"
