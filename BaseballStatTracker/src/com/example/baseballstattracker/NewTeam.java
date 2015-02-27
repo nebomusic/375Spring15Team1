@@ -34,6 +34,7 @@ public class NewTeam extends Activity {
 	}
 	
 	public void handleClick(View v) {
+		
 		setContentView(R.layout.activity_editteam);
 	}
 }
