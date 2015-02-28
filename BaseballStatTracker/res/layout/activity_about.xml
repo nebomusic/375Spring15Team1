@@ -25,7 +25,7 @@
     </TableRow>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Created by Devin Summers and John Hammer" />

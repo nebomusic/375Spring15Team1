@@ -68,7 +68,8 @@
 
         <Spinner
             android:id="@+id/spinnerPlayer"
-            android:layout_width="200dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
         <ToggleButton
@@ -77,7 +78,8 @@
             android:layout_height="wrap_content"
             android:textOff="+"
             android:textOn="-"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="handleToggleClick" />
 
     </TableRow>
 
@@ -93,21 +95,525 @@
 
         <Button
             android:id="@+id/buttonAB"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
-            android:text="AB" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="AB"
+            android:onClick="handleInGameClick" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:id="@+id/buttonOneB"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="1B"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonTwoB"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="2B"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonThreeB"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="3B"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonHR"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:text="HR"
+            android:onClick="handleInGameClick" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textAB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textOneB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textTwoB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textThreeB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textHR"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp" >
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonBall"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="Ball"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonStrike"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="Strike"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonReset"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="Reset" 
+            android:onClick="handleInGameClick" />
+
+        <Button
+            android:id="@+id/buttonH"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="H"
+            android:onClick="handleInGameClick" />
+
+        <Button
+            android:id="@+id/buttonK"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="K"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonBB"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="BB"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonHBP"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:text="HBP"
+            android:onClick="handleInGameClick"  />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textBall"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textStrike"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textFiller"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textH"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textK"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textBB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textHBP"
+            android:layout_weight="0.143"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="0" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp" >
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonPA"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="PA"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonSH"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="SH"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonSF"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="SF"
+            android:onClick="handleInGameClick"  />
+
+        <Button
+            android:id="@+id/buttonGDP"
+            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
+            android:text="GDP"
+            android:onClick="handleInGameClick"  />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textPA"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textSH"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textSF"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textGDP"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/buttonFC"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:onClick="handleInGameClick"
+            android:text="FC" />
+
+        <Button
+            android:id="@+id/buttonR"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:onClick="handleInGameClick"
+            android:text="R" />
+
+        <Button
+            android:id="@+id/buttonRBI"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:onClick="handleInGameClick"
+            android:text="RBI" />
+
+        <Button
+            android:id="@+id/buttonStB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:onClick="handleInGameClick"
+            android:text="SB" />
+
+        <Button
+            android:id="@+id/buttonCS"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:onClick="handleInGameClick"
+            android:text="CS" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textFC"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textR"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textRBI"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textStB"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textCS"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="20dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:background="#DDDDDD" >
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textCalcStats"
+            android:layout_width="fill_parent"
+            android:gravity = "center"
+            android:layout_height="wrap_content"
+            android:text="Calculated Statistics"
+            android:textSize="25dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textBA"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="BA: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textXBH"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="XBH: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textTA"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:text="TA: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textPASO"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="PA/SO: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textSBA"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="SBA: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textSBP"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.125"
+            android:gravity="center"
+            android:text="SBP: 0%"
+            android:textSize="20dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textSLG"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:text="SLG: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textISO"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="ISO: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textOBP"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="OBP: 0%"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textTB"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="TB: 0"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textTOB"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="TOB: 0"
+            android:textSize="20dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp" >
+
+        <Button
+            android:id="@+id/buttonEndGame"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="End Game"
+            android:onClick="handleInGameClick"  />
 
     </TableRow>
 

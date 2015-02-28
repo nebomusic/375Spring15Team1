@@ -26,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class StartGame extends Activity {
 	
@@ -35,10 +36,99 @@ public class StartGame extends Activity {
 	public List <String> gamedata;
 	
 	//Fields for In Game
+	private boolean isAdd = true;
 	private Button btnInGameBack;
 	private TextView textTeam;
 	private TextView textGameInfo;
 	private Spinner spinnerPlayer;
+	private ToggleButton toggleAddSub;
+	private Button buttonAB;
+	private int AB = 0;
+	private Button buttonOneB;
+	private int OneB = 0;
+	private Button buttonTwoB;
+	private int TwoB = 0;
+	private Button buttonThreeB;
+	private int ThreeB = 0;
+	private Button buttonHR;
+	private int HR = 0;
+	private TextView textAB;
+	private TextView textOneB;
+	private TextView textTwoB;
+	private TextView textThreeB;
+	private TextView textHR;
+	private Button buttonBall;
+	private int ball = 0;
+	private Button buttonStrike;
+	private int strike = 0;
+	private Button buttonReset;
+	private TextView buttonH;
+	private int H = 0;
+	private Button buttonK;
+	private int K = 0;
+	private Button buttonBB;
+	private int BB = 0;
+	private Button buttonHBP;
+	private int HBP = 0;
+	private TextView textBall;
+	private TextView textStrike;
+	private TextView textH;
+	private TextView textK;
+	private TextView textBB;
+	private TextView textHBP;
+	private Button buttonPA;
+	private int PA = 0;
+	private Button buttonSH;
+	private int SH = 0;
+	private Button buttonSF;
+	private int SF = 0;
+	private Button buttonSB;
+	private int SB = 0;
+	private Button buttonGDP;
+	private int GDP = 0;
+	private Button buttonFC;
+	private int FC = 0;
+	private Button buttonR;
+	private int run = 0;
+	private Button buttonRBI;
+	private int RBI = 0;
+	private Button buttonCS;
+	private int CS = 0;
+	private Button buttonStB;
+	private int StB = 0;
+	private TextView textPA;
+	private TextView textSH;
+	private TextView textSF;
+	private TextView textSB;
+	private TextView textGDP;
+	private TextView textFC;
+	private TextView textR;
+	private TextView textRBI;
+	private TextView textCS;
+	private TextView textStB;
+	private TextView textBA;
+	private int BA = 0;
+	private TextView textXBH;
+	private int XBH = 0;
+	private TextView textTA;
+	private int TA = 0;
+	private TextView textPASO;
+	private int PASO;
+	private TextView textSBA;
+	private int SBA;
+	private TextView textSBP;
+	private int SBP;
+	private TextView textISO;
+	private int ISO = 0;
+	private TextView textOBP;
+	private int OBP = 0;
+	private TextView textTB;
+	private int TB = 0;
+	private TextView textSLG;
+	private int SLG = 0;
+	private TextView textTOB;
+	private int TOB = 0;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +193,215 @@ public class StartGame extends Activity {
 		btnSelectTime.setText(gamedata.get(3).toString());
 		editLocation.setText(gamedata.get(4).toString());
 		
+	}
+	
+	public void handleInGameClick(View v) {
+		switch (v.getId()) {
+			case R.id.buttonAB:
+				textAB = (TextView)findViewById(R.id.textAB);
+				if (isAdd){AB++;}
+				else{AB--;}
+				textAB.setText(String.valueOf(AB));
+				updateCalcStats();
+			break;
+			case R.id.buttonOneB:
+				textOneB = (TextView)findViewById(R.id.textOneB);
+				if (isAdd){OneB++;}
+				else{OneB--;}
+				textOneB.setText(String.valueOf(OneB));
+				updateCalcStats();
+			break;
+			case R.id.buttonTwoB:
+				textTwoB = (TextView)findViewById(R.id.textTwoB);
+				if (isAdd){TwoB++;}
+				else{TwoB--;}
+				textTwoB.setText(String.valueOf(TwoB));
+				updateCalcStats();
+			break;
+			case R.id.buttonThreeB:
+				textThreeB = (TextView)findViewById(R.id.textThreeB);
+				if (isAdd){ThreeB++;}
+				else{ThreeB--;}
+				textThreeB.setText(String.valueOf(ThreeB));
+				updateCalcStats();
+			break;
+			case R.id.buttonHR:
+				textHR = (TextView)findViewById(R.id.textHR);
+				if (isAdd){HR++;}
+				else{HR--;}
+				textHR.setText(String.valueOf(HR));
+				updateCalcStats();
+			break;
+			case R.id.buttonBall:
+				textBall = (TextView)findViewById(R.id.textBall);
+				if (isAdd){ball++;}
+				else{ball--;}
+				if (ball > 4) {ball = 0;}
+				textBall.setText(String.valueOf(ball));
+				updateCalcStats();
+			break;
+			case R.id.buttonStrike:
+				textStrike = (TextView)findViewById(R.id.textStrike);
+				if (isAdd){strike++;}
+				else{strike--;}
+				if (strike > 3) {strike = 0;}
+				textStrike.setText(String.valueOf(strike));
+				updateCalcStats();
+			break;
+			case R.id.buttonReset:
+				ball = 0;
+				strike = 0;
+				textBall.setText(String.valueOf(ball));
+				textStrike.setText(String.valueOf(strike));
+				updateCalcStats();
+			break;
+			case R.id.buttonH:
+				textH = (TextView)findViewById(R.id.textH);
+				if (isAdd){H++;}
+				else{H--;}
+				textH.setText(String.valueOf(H));
+				updateCalcStats();
+			break;			
+			case R.id.buttonK:
+				textK = (TextView)findViewById(R.id.textK);
+				if (isAdd){K++;}
+				else{K--;}
+				textK.setText(String.valueOf(K));
+				updateCalcStats();
+			break;
+			case R.id.buttonBB:
+				textBB = (TextView)findViewById(R.id.textBB);
+				if (isAdd){BB++;}
+				else{BB--;}
+				textBB.setText(String.valueOf(BB));
+				updateCalcStats();
+			break;
+			case R.id.buttonHBP:
+				textHBP = (TextView)findViewById(R.id.textHBP);
+				if (isAdd){HBP++;}
+				else{HBP--;}
+				textHBP.setText(String.valueOf(HBP));
+				updateCalcStats();
+			break;
+			case R.id.buttonPA:
+				textPA = (TextView)findViewById(R.id.textPA);
+				if (isAdd){PA++;}
+				else{PA--;}
+				textPA.setText(String.valueOf(PA));
+				updateCalcStats();
+			break;
+			case R.id.buttonSH:
+				textSH = (TextView)findViewById(R.id.textSH);
+				if (isAdd){SH++;}
+				else{SH--;}
+				textSH.setText(String.valueOf(SH));
+				updateCalcStats();
+			break;
+			case R.id.buttonSF:
+				textSF = (TextView)findViewById(R.id.textSF);
+				if (isAdd){SF++; SH++;}
+				else{SF--;}
+				textSF.setText(String.valueOf(SF));
+				textSH.setText(String.valueOf(SH));
+				updateCalcStats();
+			break;
+			case R.id.buttonGDP:
+				textGDP = (TextView)findViewById(R.id.textGDP);
+				if (isAdd){GDP++;}
+				else{GDP--;}
+				textGDP.setText(String.valueOf(GDP));
+				updateCalcStats();
+			break;
+			case R.id.buttonFC:
+				textFC = (TextView)findViewById(R.id.textFC);
+				if (isAdd){FC++;}
+				else{FC--;}
+				textFC.setText(String.valueOf(FC));
+				updateCalcStats();
+			break;
+			case R.id.buttonR:
+				textR = (TextView)findViewById(R.id.textR);
+				if (isAdd){run++;}
+				else{run--;}
+				textR.setText(String.valueOf(run));
+				updateCalcStats();
+			break;
+			case R.id.buttonRBI:
+				textRBI = (TextView)findViewById(R.id.textRBI);
+				if (isAdd){RBI++;}
+				else{RBI--;}
+				textRBI.setText(String.valueOf(RBI));
+				updateCalcStats();
+			break;
+			case R.id.buttonCS:
+				textCS = (TextView)findViewById(R.id.textCS);
+				if (isAdd){CS++;}
+				else{CS--;}
+				textCS.setText(String.valueOf(CS));
+				updateCalcStats();
+			break;
+			case R.id.buttonStB:
+				textStB = (TextView)findViewById(R.id.textStB);
+				if (isAdd){StB++;}
+				else{StB--;}
+				textStB.setText(String.valueOf(SB));
+				updateCalcStats();
+			break;
+			case R.id.buttonEndGame:
+				Intent intentOne = new Intent(this, MainActivity.class);
+				startActivity(intentOne);
+			break;
+		}
+	}
+	
+	private void updateCalcStats() {
+		textBA = (TextView)findViewById(R.id.textBA);
+		textXBH = (TextView)findViewById(R.id.textXBH);
+		textTA = (TextView)findViewById(R.id.textTA);
+		textSBA = (TextView)findViewById(R.id.textSBA);
+		textSBP = (TextView)findViewById(R.id.textSBP);
+		textPASO = (TextView)findViewById(R.id.textPASO);
+		textISO = (TextView)findViewById(R.id.textISO);
+		textOBP = (TextView)findViewById(R.id.textOBP);
+		textTB = (TextView)findViewById(R.id.textTB);
+		textSLG = (TextView)findViewById(R.id.textSLG);
+		textTOB = (TextView)findViewById(R.id.textTOB);
+		
+		if (AB == 0) {BA = 0;}
+		else {BA = H/AB;}
+		XBH = (TwoB + ThreeB + HR);
+		if ((AB - H + CS + GDP) == 0) {TA = 0;}
+		else{TA = (TB + BB + HBP + SB - CS)/(AB - H + CS + GDP);}
+		if (K == 0){PASO = 0;}
+		else {PASO = PA/K;}
+		SBA = SB+CS;
+		if (SBA == 0){SBP = 0;}
+		else{SBP = SB/SBA;}
+		if (AB == 0) {SLG = 0;}
+		else{SLG = TB/AB;}
+		ISO = BA-SLG;
+		TOB = (H + BB + HBP);
+		if ((AB + BB + HBP + SH) == 0){OBP = 0;}
+		else{OBP = TOB/(AB + BB + HBP + SH);}
+		TB =  (OneB + (2 * TwoB) + (3 * ThreeB) + (4 * HR));
+		textBA.setText("BA: " + String.valueOf(BA));
+		textXBH.setText("XBH: " +String.valueOf(XBH));
+		textTA.setText("TA: " +String.valueOf(TA));
+		textSBA.setText("SBA: " +String.valueOf(SBA));
+		textSBP.setText("SBP: " +String.valueOf(SBP) + "%");
+		textPASO.setText("PA/SO: " +String.valueOf(PASO));
+		textSLG.setText("SLG: " +String.valueOf(SLG));
+		textISO.setText("ISO: " +String.valueOf(ISO));
+		textOBP.setText("OBP: " +String.valueOf(OBP) + "%");
+		textTB.setText("TB: " +String.valueOf(TB));
+		textTOB.setText("TOB: " +String.valueOf(TOB));
+	}
+
+	public void handleToggleClick(View v) {
+		boolean on = ((ToggleButton) v).isChecked();
+		
+		if (on){isAdd = false;}
+		else {isAdd = true;}
 	}
 	
 	public void handleRadioClick(View v) {
