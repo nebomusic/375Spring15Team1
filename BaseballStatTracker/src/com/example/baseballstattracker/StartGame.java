@@ -5,18 +5,24 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -34,6 +40,7 @@ public class StartGame extends Activity {
 	private Spinner spinnerSelectTeam;
 	private boolean isHome = true;
 	public List <String> gamedata;
+	private Context c = this;
 	
 	//Fields for In Game
 	private boolean isAdd = true;
@@ -203,6 +210,7 @@ public class StartGame extends Activity {
 				else{AB--;}
 				textAB.setText(String.valueOf(AB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonOneB:
 				textOneB = (TextView)findViewById(R.id.textOneB);
@@ -210,6 +218,7 @@ public class StartGame extends Activity {
 				else{OneB--;}
 				textOneB.setText(String.valueOf(OneB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonTwoB:
 				textTwoB = (TextView)findViewById(R.id.textTwoB);
@@ -217,6 +226,7 @@ public class StartGame extends Activity {
 				else{TwoB--;}
 				textTwoB.setText(String.valueOf(TwoB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonThreeB:
 				textThreeB = (TextView)findViewById(R.id.textThreeB);
@@ -224,6 +234,7 @@ public class StartGame extends Activity {
 				else{ThreeB--;}
 				textThreeB.setText(String.valueOf(ThreeB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonHR:
 				textHR = (TextView)findViewById(R.id.textHR);
@@ -231,6 +242,7 @@ public class StartGame extends Activity {
 				else{HR--;}
 				textHR.setText(String.valueOf(HR));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonBall:
 				textBall = (TextView)findViewById(R.id.textBall);
@@ -239,6 +251,7 @@ public class StartGame extends Activity {
 				if (ball > 4) {ball = 0;}
 				textBall.setText(String.valueOf(ball));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonStrike:
 				textStrike = (TextView)findViewById(R.id.textStrike);
@@ -247,6 +260,7 @@ public class StartGame extends Activity {
 				if (strike > 3) {strike = 0;}
 				textStrike.setText(String.valueOf(strike));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonReset:
 				ball = 0;
@@ -261,6 +275,7 @@ public class StartGame extends Activity {
 				else{H--;}
 				textH.setText(String.valueOf(H));
 				updateCalcStats();
+				updateStatList();
 			break;			
 			case R.id.buttonK:
 				textK = (TextView)findViewById(R.id.textK);
@@ -268,6 +283,7 @@ public class StartGame extends Activity {
 				else{K--;}
 				textK.setText(String.valueOf(K));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonBB:
 				textBB = (TextView)findViewById(R.id.textBB);
@@ -275,6 +291,7 @@ public class StartGame extends Activity {
 				else{BB--;}
 				textBB.setText(String.valueOf(BB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonHBP:
 				textHBP = (TextView)findViewById(R.id.textHBP);
@@ -282,6 +299,7 @@ public class StartGame extends Activity {
 				else{HBP--;}
 				textHBP.setText(String.valueOf(HBP));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonPA:
 				textPA = (TextView)findViewById(R.id.textPA);
@@ -289,6 +307,7 @@ public class StartGame extends Activity {
 				else{PA--;}
 				textPA.setText(String.valueOf(PA));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonSH:
 				textSH = (TextView)findViewById(R.id.textSH);
@@ -296,6 +315,7 @@ public class StartGame extends Activity {
 				else{SH--;}
 				textSH.setText(String.valueOf(SH));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonSF:
 				textSF = (TextView)findViewById(R.id.textSF);
@@ -304,6 +324,7 @@ public class StartGame extends Activity {
 				textSF.setText(String.valueOf(SF));
 				textSH.setText(String.valueOf(SH));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonGDP:
 				textGDP = (TextView)findViewById(R.id.textGDP);
@@ -311,6 +332,7 @@ public class StartGame extends Activity {
 				else{GDP--;}
 				textGDP.setText(String.valueOf(GDP));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonFC:
 				textFC = (TextView)findViewById(R.id.textFC);
@@ -318,6 +340,7 @@ public class StartGame extends Activity {
 				else{FC--;}
 				textFC.setText(String.valueOf(FC));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonR:
 				textR = (TextView)findViewById(R.id.textR);
@@ -325,6 +348,7 @@ public class StartGame extends Activity {
 				else{run--;}
 				textR.setText(String.valueOf(run));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonRBI:
 				textRBI = (TextView)findViewById(R.id.textRBI);
@@ -332,6 +356,7 @@ public class StartGame extends Activity {
 				else{RBI--;}
 				textRBI.setText(String.valueOf(RBI));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonCS:
 				textCS = (TextView)findViewById(R.id.textCS);
@@ -339,6 +364,7 @@ public class StartGame extends Activity {
 				else{CS--;}
 				textCS.setText(String.valueOf(CS));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonStB:
 				textStB = (TextView)findViewById(R.id.textStB);
@@ -346,14 +372,51 @@ public class StartGame extends Activity {
 				else{StB--;}
 				textStB.setText(String.valueOf(SB));
 				updateCalcStats();
+				updateStatList();
 			break;
 			case R.id.buttonEndGame:
-				Intent intentOne = new Intent(this, MainActivity.class);
-				startActivity(intentOne);
+				loadGameInfo();
+				showYesNoDialog(v);
 			break;
 		}
 	}
 	
+	//Created with the help of http://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-in-android
+	
+	public class YesNoFragment extends DialogFragment {
+
+	    @Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	        return new AlertDialog.Builder(getActivity())
+	            .setTitle("Confirm")
+	            .setMessage("Are You Sure You Want to End the Game?")
+	            .setNegativeButton(android.R.string.no, new OnClickListener() {
+	                @Override
+	                public void onClick(DialogInterface dialog, int which) {
+	                    // do nothing (will close dialog)
+	                }
+	            })
+	            .setPositiveButton(android.R.string.yes,  new OnClickListener() {
+	                @Override
+	                public void onClick(DialogInterface dialog, int which) {
+	                	Intent intentOne = new Intent(c, MainActivity.class);
+	    				startActivity(intentOne);
+	                }
+	            })
+	            .create();
+	    }
+	}
+	
+	public void showYesNoDialog(View v) {
+		DialogFragment newFragment = new YesNoFragment();
+		newFragment.show(getFragmentManager(), "confirm");
+		
+	}
+	
+	private void updateStatList() {
+		//Update the public list of data using the SQLite Database		
+	}
+
 	private void updateCalcStats() {
 		textBA = (TextView)findViewById(R.id.textBA);
 		textXBH = (TextView)findViewById(R.id.textXBH);
@@ -438,6 +501,11 @@ public class StartGame extends Activity {
 		
 	}
 	
+	private void loadGameInfo() {
+		// creates a new column in the SQLite Database to hold the new game's data
+		
+	}
+
 	public void setGameInfo() {
 		//Populate GameData List
 			gamedata = new ArrayList <String> (0);
@@ -486,7 +554,61 @@ public class StartGame extends Activity {
       			R.array.player_array, android.R.layout.simple_spinner_dropdown_item); 
       playerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       spinnerPlayer.setAdapter(playerAdapter);
+      spinnerPlayer.setOnItemSelectedListener(new OnItemSelectedListener()  {
+  	   	@Override
+  		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+  	   		parent.getItemAtPosition(position);
+  	   		textAB = (TextView)findViewById(R.id.textAB);	
+  	   		textOneB = (TextView)findViewById(R.id.textOneB);
+  	   		textTwoB = (TextView)findViewById(R.id.textTwoB);
+  	   		textThreeB = (TextView)findViewById(R.id.textThreeB);
+  	   		textHR = (TextView)findViewById(R.id.textHR);
+  	   		textBall = (TextView)findViewById(R.id.textBall);
+  	   		textStrike = (TextView)findViewById(R.id.textStrike);
+  	   		textH = (TextView)findViewById(R.id.textH);
+  	   		textK = (TextView)findViewById(R.id.textK);
+  	   		textBB = (TextView)findViewById(R.id.textBB);
+  	   		textHBP = (TextView)findViewById(R.id.textHBP);
+  	   		textPA = (TextView)findViewById(R.id.textPA);
+  	   		textSH = (TextView)findViewById(R.id.textSH);
+  	   		textSF = (TextView)findViewById(R.id.textSF);
+  	   		textGDP = (TextView)findViewById(R.id.textGDP);
+  	   		textFC = (TextView)findViewById(R.id.textFC);
+  	   		textR = (TextView)findViewById(R.id.textR);
+  	   		textRBI = (TextView)findViewById(R.id.textRBI);
+  	   		textStB = (TextView)findViewById(R.id.textStB);
+  	   		textCS = (TextView)findViewById(R.id.textCS);
+  			//updates all stat data to match data in the SQLite Database 
+  	   		//for now it will just reset the data
+  	   		textAB.setText("0");
+  	   		textOneB.setText("0");
+  	   		textTwoB.setText("0");
+  	   		textThreeB.setText("0");
+  	   		textHR.setText("0");
+  	   		textBall.setText("0");
+  	   		textStrike.setText("0");
+  	   		textH.setText("0");
+  	   		textBB.setText("0");
+  	   		textHBP.setText("0");
+  	   		textPA.setText("0");
+  	   		textSH.setText("0");
+  	   		textSF.setText("0");
+  	   		textGDP.setText("0");
+  	   		textFC.setText("0");
+  	   		textR.setText("0");
+  	   		textRBI.setText("0");
+  	   		textStB.setText("0");
+  	   		textCS.setText("0"); 
+  	   		
+  	   		updateCalcStats();
+  		}
 
+  		@Override
+  		public void onNothingSelected(AdapterView<?> parent) {
+  			// TODO Auto-generated method stub
+  			
+  		}
+  	});
 	}
 		
 //Classes for Date and Time Pickers 
