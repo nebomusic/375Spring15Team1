@@ -1,7 +1,12 @@
 package com.example.baseballstattracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class TeamsDAO {
@@ -34,7 +39,7 @@ public class TeamsDAO {
 		}
 		
 		values.put(TeamsSQLiteHelper.COLUMN_NAME, name);
-		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers);
+		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
 		
 		long insertId = database.insert(TeamsSQLiteHelper.TABLE_TEAMS, null, values);
 		
@@ -67,6 +72,45 @@ public class TeamsDAO {
 		
 		database.update(TeamsSQLiteHelper.TABLE_TEAMS, values, TeamsSQLiteHelper.COLUMN_ID + " = " + id, null);
 
+	}
+	
+	public List<Team> getAllTeams() {
+		List <Team> teamList = new ArrayList<Team>(0);
+		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns, null, null, null, null, null);
+		
+		cursor.moveToFirst();
+		
+		while(!cursor.isAfterLast()) {
+			Team team = cursorToTeam(cursor);
+			teamList.add(team);
+			cursor.moveToNext();
+		}
+		
+		return teamList;
+		
+	}
+	
+	private Team cursorToTeam(Cursor cursor) {
+		
+		int id = cursor.getInt(0);
+		int name = cursor.getInt(1);
+		String players = cursor.getString(2);
+		
+		Team t = new Team();
+		
+		t.setTeamId(id);
+		t.setName(name == 1);
+		t.setPlayers(players);
+		
+		return t;
+		
+	}
+	
+	public Team getTeamById(int id) {
+		//Create a cursor
+		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns,
+				TeamsSQLiteHelper.COLUMN_ID + " = " + id, null, null, null, null);
+		return (cursor.moveToFirst()) ? cursorToTeam(cursor) : null;
 	}
 
 } // end class TeamsDAO
