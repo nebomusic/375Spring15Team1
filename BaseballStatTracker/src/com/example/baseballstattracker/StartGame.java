@@ -41,6 +41,8 @@ public class StartGame extends Activity {
 	private boolean isHome = true;
 	public List <String> gamedata;
 	private Context c = this;
+	private TeamsDAO teams = new TeamsDAO(c);
+	private List<String>allTeams = teams.getAllTeams();
 	
 	//Fields for In Game
 	private boolean isAdd = true;
@@ -146,8 +148,7 @@ public class StartGame extends Activity {
 		//Populate Spinner
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
 						
-		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
-						R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+		ArrayAdapter<String> teamAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allTeams);
 		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerSelectTeam.setAdapter(teamAdapter);
 		
@@ -186,9 +187,8 @@ public class StartGame extends Activity {
 		
 		//Spinner
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
-				
-		ArrayAdapter<CharSequence> teamAdapter = ArrayAdapter.createFromResource(this, 
-				R.array.team_array, android.R.layout.simple_spinner_dropdown_item); 
+		
+		ArrayAdapter<String> teamAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allTeams);
 		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerSelectTeam.setAdapter(teamAdapter);
 			
@@ -199,7 +199,7 @@ public class StartGame extends Activity {
 		btnSelectDate.setText(gamedata.get(2).toString());
 		btnSelectTime.setText(gamedata.get(3).toString());
 		editLocation.setText(gamedata.get(4).toString());
-		
+
 	}
 	
 	public void handleInGameClick(View v) {
@@ -606,7 +606,7 @@ public class StartGame extends Activity {
   		@Override
   		public void onNothingSelected(AdapterView<?> parent) {
   			// TODO Auto-generated method stub
-  			
+  			//Do Nothing
   		}
   	});
 	}

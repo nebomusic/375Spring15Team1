@@ -74,7 +74,7 @@ public class TeamsDAO {
 
 	}
 	
-	public List<Team> getAllTeams() {
+	public List<String> getAllTeams() {
 		List <Team> teamList = new ArrayList<Team>(0);
 		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns, null, null, null, null, null);
 		
@@ -86,7 +86,14 @@ public class TeamsDAO {
 			cursor.moveToNext();
 		}
 		
-		return teamList;
+		List<String>teamStringList = new ArrayList<String>(0);
+		for (int i=0; i<teamList.size()-1;i++){
+			String temp = teamList.get(i).toString(); 
+			teamStringList.add(temp);
+			temp = "";
+		}
+
+		return teamStringList;
 		
 	}
 	
