@@ -1,16 +1,79 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.summersfinalexam.MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/editDollars"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:hint="Enter Dollar Amount" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonDollars"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="Dollars"
+            android:onClick="handleClick" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editYen"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Yen Amount" />
+
+        <Button
+            android:id="@+id/buttonYen"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="Yen"
+            android:onClick="handleClick" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editPounds"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter Pounds Amount" />
+
+        <Button
+            android:id="@+id/buttonPounds"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:text="Pounds"
+            android:onClick="handleClick" />
+
+    </TableRow>
+
+</LinearLayout>
