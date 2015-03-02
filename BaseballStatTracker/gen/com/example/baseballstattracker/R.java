@@ -37,7 +37,7 @@ public final class R {
         public static final int buttonBB=0x7f090023;
         public static final int buttonBall=0x7f09001e;
         public static final int buttonCS=0x7f09003d;
-        public static final int buttonCreate=0x7f090059;
+        public static final int buttonCreate2=0x7f090059;
         public static final int buttonEdit=0x7f090057;
         public static final int buttonEndGame=0x7f090055;
         public static final int buttonFC=0x7f090039;
@@ -66,7 +66,7 @@ public final class R {
         public static final int buttonTrade=0x7f09000a;
         public static final int buttonTwoB=0x7f090015;
         public static final int editLocation=0x7f090060;
-        public static final int editText1=0x7f090005;
+        public static final int editTeam=0x7f090005;
         public static final int radioAway=0x7f09005d;
         public static final int radioGroup1=0x7f09005b;
         public static final int radioHome=0x7f09005c;

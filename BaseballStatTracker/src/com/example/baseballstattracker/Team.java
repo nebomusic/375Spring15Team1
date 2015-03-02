@@ -2,7 +2,7 @@ package com.example.baseballstattracker;
 
 public class Team {
 	private int teamId;
-	private boolean name;
+	private String name;
 	private String players;
 	
 	// Constructor
@@ -15,7 +15,7 @@ public class Team {
 		teamId = id;
 	}
 	
-	public void setName(boolean n) {
+	public void setName(String n) {
 		name = n;
 	}
 	
@@ -28,7 +28,7 @@ public class Team {
 		return teamId;
 	}
 	
-	public boolean getName() {
+	public String getName() {
 		return name;
 	}
 	
@@ -36,19 +36,6 @@ public class Team {
 		return players;
 	}
 	
-	// Provides a String of the class
-	public String toString() {
-		String result = "";
-		
-		if (name) {
-			result += "Name: ";
-		}
-		
-		result += teamId + " " + players;
-		
-		return result;
-	}
-
 } // end class Team
 
 

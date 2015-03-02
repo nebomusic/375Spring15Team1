@@ -5,13 +5,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class NewTeam extends Activity {
+	
+	//Field
+	private EditText editTeam;
+	private TeamList teamList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newteam);
+		
+		editTeam = (EditText)findViewById(R.id.editTeam);
 	}
 
 	@Override
@@ -34,7 +41,15 @@ public class NewTeam extends Activity {
 	}
 	
 	public void handleClick(View v) {
-		
+		addTeam();
 		setContentView(R.layout.activity_editteam);
+	}
+
+	private void addTeam() {
+		editTeam = (EditText)findViewById(R.id.editTeam);
+		Team t = new Team();
+		t.setName(editTeam.getText().toString());	
+		
+		Team newTeam = teamList.createTeam(t);
 	}
 }

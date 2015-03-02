@@ -41,8 +41,9 @@ public class StartGame extends Activity {
 	private boolean isHome = true;
 	public List <String> gamedata;
 	private Context c = this;
-	private TeamsDAO teams = new TeamsDAO(c);
-	private List<String>allTeams = teams.getAllTeams();
+	//private TeamsDAO teams = new TeamsDAO(c);
+	private List<Team>teams;
+	private TeamList teamList;
 	
 	//Fields for In Game
 	private boolean isAdd = true;
@@ -146,11 +147,15 @@ public class StartGame extends Activity {
 	
 		//Start Game XML
 		//Populate Spinner
+		teams = new ArrayList<Team>(0);
+		teamList = new TeamList(this);
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
-						
-		ArrayAdapter<String> teamAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allTeams);
-		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerSelectTeam.setAdapter(teamAdapter);
+	
+		populateSpinnerTeams();
+		
+//		ArrayAdapter<String> teamAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allTeams);
+//		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//		spinnerSelectTeam.setAdapter(teamAdapter);
 		
 		//Populate List with Generic Data
 		gamedata = new ArrayList <String> (0);
@@ -186,11 +191,11 @@ public class StartGame extends Activity {
 		setContentView(R.layout.activity_startgame);
 		
 		//Spinner
+		teams = new ArrayList<Team>(0);
+		teamList = new TeamList(this);
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
-		
-		ArrayAdapter<String> teamAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, allTeams);
-		teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerSelectTeam.setAdapter(teamAdapter);
+	
+		populateSpinnerTeams();
 			
 		//Fill Spots with Prior Data
 		Button btnSelectDate = (Button)findViewById(R.id.buttonSelectDate);
@@ -609,6 +614,24 @@ public class StartGame extends Activity {
   			//Do Nothing
   		}
   	});
+      
+	}
+	
+	private void populateSpinnerTeams() {
+		//Create a list of strings
+		List<String>teamStrings = new ArrayList<String>(0);
+		
+		teams = teamList.getAllTeams();
+		
+		for(int i = 0; i<teams.size(); i++) {
+			teamStrings.add(teams.get(i).toString());
+		}
+		
+		ArrayAdapter<String>arrayAdapter = 
+				new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamStrings);
+		
+		spinnerSelectTeam.setAdapter(arrayAdapter);
+		
 	}
 		
 //Classes for Date and Time Pickers 

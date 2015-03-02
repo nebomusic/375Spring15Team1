@@ -33,10 +33,7 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		// Place t data into values object
 		// Handle boolean values
-		int name = 0;
-		if (t.getName()) {
-			name = 1;
-		}
+		String name = t.getName();
 		
 		values.put(TeamsSQLiteHelper.COLUMN_NAME, name);
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
@@ -62,10 +59,7 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		int id = t.getId();
 		
-		int name = 0;
-		if(t.getName()) {
-			name = 1;
-		}
+		String name = t.getName();
 		
 		values.put(TeamsSQLiteHelper.COLUMN_NAME, name);
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
@@ -74,7 +68,7 @@ public class TeamsDAO {
 
 	}
 	
-	public List<String> getAllTeams() {
+	public List<Team> getAllTeams() {
 		List <Team> teamList = new ArrayList<Team>(0);
 		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns, null, null, null, null, null);
 		
@@ -86,27 +80,27 @@ public class TeamsDAO {
 			cursor.moveToNext();
 		}
 		
-		List<String>teamStringList = new ArrayList<String>(0);
-		for (int i=0; i<teamList.size()-1;i++){
-			String temp = teamList.get(i).toString(); 
-			teamStringList.add(temp);
-			temp = "";
-		}
+//		List<String>teamStringList = new ArrayList<String>(0);
+//		for (int i=0; i<teamList.size()-1;i++){
+//			String temp = teamList.get(i).toString(); 
+//			teamStringList.add(temp);
+//			temp = "";
+//		}
 
-		return teamStringList;
+		return teamList;
 		
 	}
 	
 	private Team cursorToTeam(Cursor cursor) {
 		
 		int id = cursor.getInt(0);
-		int name = cursor.getInt(1);
+		String name = cursor.getString(1);
 		String players = cursor.getString(2);
 		
 		Team t = new Team();
 		
 		t.setTeamId(id);
-		t.setName(name == 1);
+		t.setName(name);
 		t.setPlayers(players);
 		
 		return t;
