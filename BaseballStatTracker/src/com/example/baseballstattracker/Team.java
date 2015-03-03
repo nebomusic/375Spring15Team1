@@ -1,9 +1,11 @@
 package com.example.baseballstattracker;
 
+import java.util.List;
+
 public class Team {
 	private int teamId;
 	private String name;
-	private String players;
+	private List<String> players;
 	
 	// Constructor
 	public Team() {
@@ -19,8 +21,8 @@ public class Team {
 		name = n;
 	}
 	
-	public void setPlayers(String p) {
-		players = p;
+	public void addPlayer(String p) {
+		players.add(p);
 	}
 	
 	// Accessors
@@ -32,8 +34,16 @@ public class Team {
 		return name;
 	}
 	
-	public String getPlayers() {
+	public List<String> getPlayerList() {
 		return players;
+	}
+	
+	public String getPlayers() {
+		String player = "";
+		for (int i=0; i<players.size();i++){
+			player += players.get(i) + ", ";
+		}
+		return player;
 	}
 	
 } // end class Team

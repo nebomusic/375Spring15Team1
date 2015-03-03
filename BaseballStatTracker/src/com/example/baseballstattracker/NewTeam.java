@@ -3,6 +3,7 @@ package com.example.baseballstattracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,19 +41,26 @@ public class NewTeam extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	public void otherClick(View v) {
+		
+	}
 	
 	public void handleClick(View v) {
+		Log.d("test1", "test");
 		addTeam();
+		
+		Intent intentOne = new Intent(this, EditTeam.class);
+		startActivity(intentOne);
 	}
 
 	private void addTeam() {
+		
 		editTeam = (EditText)findViewById(R.id.editTeam);
 		Team t = new Team();
 		t.setName(editTeam.getText().toString());	
 		
 		Team newTeam = teamList.createTeam(t);
 		
-		Intent intentOne = new Intent(this, EditTeam.class);
-		startActivity(intentOne);
+		
 	}
 }

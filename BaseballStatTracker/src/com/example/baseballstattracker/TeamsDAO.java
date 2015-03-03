@@ -33,9 +33,8 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		// Place t data into values object
 		// Handle boolean values
-		String name = t.getName();
-		
-		values.put(TeamsSQLiteHelper.COLUMN_NAME, name);
+				
+		values.put(TeamsSQLiteHelper.COLUMN_NAME, t.getName());
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
 		
 		long insertId = database.insert(TeamsSQLiteHelper.TABLE_TEAMS, null, values);
@@ -59,9 +58,7 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		int id = t.getId();
 		
-		String name = t.getName();
-		
-		values.put(TeamsSQLiteHelper.COLUMN_NAME, name);
+		values.put(TeamsSQLiteHelper.COLUMN_NAME, t.getName());
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
 		
 		database.update(TeamsSQLiteHelper.TABLE_TEAMS, values, TeamsSQLiteHelper.COLUMN_ID + " = " + id, null);
@@ -79,13 +76,6 @@ public class TeamsDAO {
 			teamList.add(team);
 			cursor.moveToNext();
 		}
-		
-//		List<String>teamStringList = new ArrayList<String>(0);
-//		for (int i=0; i<teamList.size()-1;i++){
-//			String temp = teamList.get(i).toString(); 
-//			teamStringList.add(temp);
-//			temp = "";
-//		}
 
 		return teamList;
 		
@@ -101,10 +91,9 @@ public class TeamsDAO {
 		
 		t.setTeamId(id);
 		t.setName(name);
-		t.setPlayers(players);
+		t.addPlayer(players);
 		
-		return t;
-		
+		return t;		
 	}
 	
 	public Team getTeamById(int id) {
