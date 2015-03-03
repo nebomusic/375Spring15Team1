@@ -46,7 +46,8 @@ public class Manager extends Activity {
 	public void handleClick(View v) {
 		switch (v.getId()) {
 			case R.id.buttonAdd:
-				setContentView(R.layout.activity_newteam);
+				Intent intentTwo = new Intent(this, NewTeam.class);
+				startActivity(intentTwo);
 				break;
 			case R.id.buttonEdit:
 				Intent intentOne = new Intent(this, EditTeam.class);

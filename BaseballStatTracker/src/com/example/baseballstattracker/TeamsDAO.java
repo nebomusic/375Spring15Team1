@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class TeamsDAO {
 	private SQLiteDatabase database;
@@ -33,7 +34,7 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		// Place t data into values object
 		// Handle boolean values
-				
+		Log.d("test3", "test3");		
 		values.put(TeamsSQLiteHelper.COLUMN_NAME, t.getName());
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
 		
