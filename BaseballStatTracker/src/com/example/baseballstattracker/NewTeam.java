@@ -1,6 +1,7 @@
 package com.example.baseballstattracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +43,6 @@ public class NewTeam extends Activity {
 	
 	public void handleClick(View v) {
 		addTeam();
-		setContentView(R.layout.activity_editteam);
 	}
 
 	private void addTeam() {
@@ -51,5 +51,8 @@ public class NewTeam extends Activity {
 		t.setName(editTeam.getText().toString());	
 		
 		Team newTeam = teamList.createTeam(t);
+		
+		Intent intentOne = new Intent(this, EditTeam.class);
+		startActivity(intentOne);
 	}
 }
