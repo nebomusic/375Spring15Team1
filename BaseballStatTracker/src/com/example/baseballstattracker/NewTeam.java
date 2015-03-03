@@ -21,6 +21,9 @@ public class NewTeam extends Activity {
 		setContentView(R.layout.activity_newteam);
 		
 		editTeam = (EditText)findViewById(R.id.editTeam);
+		
+		teamList = new TeamList(this);
+		
 	}
 
 	@Override

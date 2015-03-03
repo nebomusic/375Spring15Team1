@@ -1,24 +1,50 @@
 package com.example.baseballstattracker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class EditTeam extends Activity {
+	private Spinner spinnerTeams;
+	private List<Team>teams;
+	private TeamList teamList;
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
 		setContentView(R.layout.activity_editteam);
+		
+		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
+		
+		//Spinner
+		teams = new ArrayList<Team>(0);
+		teamList = new TeamList(this);
+		spinnerTeams = (Spinner)findViewById(R.id.spinnerSelectTeam);
+			
+		populateSpinnerTeams();
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editteam);
+		
+		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
+		
+		//Spinner
+		teams = new ArrayList<Team>(0);
+		teamList = new TeamList(this);
+		spinnerTeams = (Spinner)findViewById(R.id.spinnerSelectTeam);
+			
+		populateSpinnerTeams();
 
 	}
 
@@ -44,5 +70,26 @@ public class EditTeam extends Activity {
 	public void handleClick(View v) {
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
+	}
+	
+	private void populateSpinnerTeams() {
+		//Create a list of strings
+		List<String>teamStrings = new ArrayList<String>(0);
+		
+		teams = teamList.getAllTeams();
+		
+		for(int i = 0; i<teams.size(); i++) {
+			teamStrings.add(teams.get(i).getName());
+		}
+		
+		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
+		
+		ArrayAdapter<String>arrayAdapter = 
+				new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamStrings);
+		
+		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
+		spinnerTeams.setAdapter(arrayAdapter);
+		
 	}
 }

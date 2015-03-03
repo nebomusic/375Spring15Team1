@@ -624,11 +624,13 @@ public class StartGame extends Activity {
 		teams = teamList.getAllTeams();
 		
 		for(int i = 0; i<teams.size(); i++) {
-			teamStrings.add(teams.get(i).toString());
+			teamStrings.add(teams.get(i).getName());
 		}
 		
 		ArrayAdapter<String>arrayAdapter = 
 				new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, teamStrings);
+		
+		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		spinnerSelectTeam.setAdapter(arrayAdapter);
 		

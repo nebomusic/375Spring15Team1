@@ -1,5 +1,6 @@
 package com.example.baseballstattracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
@@ -9,7 +10,7 @@ public class Team {
 	
 	// Constructor
 	public Team() {
-		
+		players = new ArrayList<String>(0);
 	}
 	
 	// Accessors and Modifiers

@@ -20,7 +20,7 @@ public class TeamsSQLiteHelper extends SQLiteOpenHelper {
 			+TABLE_TEAMS + "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_NAME + " text not null, "
-			+ COLUMN_PLAYERS + " text not null, ";
+			+ COLUMN_PLAYERS + " text not null);";
 	
 	
 	public TeamsSQLiteHelper(Context context) {
