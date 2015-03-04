@@ -34,7 +34,6 @@ public class TeamsDAO {
 		ContentValues values = new ContentValues();
 		// Place t data into values object
 		// Handle boolean values
-		Log.d("test3", "test3");		
 		values.put(TeamsSQLiteHelper.COLUMN_NAME, t.getName());
 		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
 		

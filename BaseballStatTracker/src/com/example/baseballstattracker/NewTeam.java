@@ -46,9 +46,7 @@ public class NewTeam extends Activity {
 	}
 	
 	public void handleClick(View v) {
-		Log.d("test1", "test1");
 		addTeam();
-		Log.d("test2", "test2");
 		Intent intentOne = new Intent(this, EditTeam.class);
 		startActivity(intentOne);
 	}
