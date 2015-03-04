@@ -46,5 +46,12 @@ public class Player {
 	
 	
 	//Accessors
+	public int getId() {
+		return playerId;
+	}
+	
+	public String getName() {
+		return name;
+	}
 
 }

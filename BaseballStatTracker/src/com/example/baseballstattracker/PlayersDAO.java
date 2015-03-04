@@ -41,7 +41,6 @@ public class PlayersDAO {
 			PlayersSQLiteHelper.COLUMN_ONBASEPERCENTAGE,
 			PlayersSQLiteHelper.COLUMN_TOTALBASES,
 			PlayersSQLiteHelper.COLUMN_SLUGGING,
-			PlayersSQLiteHelper.COLUMN_TIMESONBASE,
 			PlayersSQLiteHelper.COLUMN_TIMESONBASE};
 	
 	public PlayersDAO(Context context) {
@@ -56,7 +55,7 @@ public class PlayersDAO {
 		dbHelper.close();
 	}
 			
-	public Team createPlayer(Player p) {
+	public Player createPlayer(Player p) {
 		ContentValues values = new ContentValues();
 		// Place t data into values object
 		// Handle boolean values
@@ -68,64 +67,63 @@ public class PlayersDAO {
 		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns,
 										PlayersSQLiteHelper.COLUMN_ID + " = " + insertId , null, null, null, null);
 		cursor.moveToLast();
-		Team newTeam = cursorToTeam(cursor);
+		Player newPlayer = cursorToPlayer(cursor);
 		cursor.close();
 		
-		return newTeam;
+		return newPlayer;
 	}
 	
-	public void deleteTeam(Team t) {
-		int id = t.getId();
-		database.delete(TeamsSQLiteHelper.TABLE_TEAMS,
-				TeamsSQLiteHelper.COLUMN_ID + " = " + id, null);
+	public void deletePlayer(Player p) {
+		int id = p.getId();
+		database.delete(PlayersSQLiteHelper.TABLE_PLAYERS,
+				PlayersSQLiteHelper.COLUMN_ID + " = " + id, null);
 	}
 	
-	public void editTeam(Team t) {
+	public void editPlayer(Player p) {
 		ContentValues values = new ContentValues();
-		int id = t.getId();
+		int id = p.getId();
 		
-		values.put(TeamsSQLiteHelper.COLUMN_NAME, t.getName());
-		values.put(TeamsSQLiteHelper.COLUMN_PLAYERS, t.getPlayers());
-		
-		database.update(TeamsSQLiteHelper.TABLE_TEAMS, values, TeamsSQLiteHelper.COLUMN_ID + " = " + id, null);
+		values.put(PlayersSQLiteHelper.COLUMN_NAME, p.getName());
+				
+		database.update(PlayersSQLiteHelper.TABLE_PLAYERS, values, PlayersSQLiteHelper.COLUMN_ID + " = " + id, null);
 
 	}
 	
-	public List<Team> getAllTeams() {
-		List <Team> teamList = new ArrayList<Team>(0);
-		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns, null, null, null, null, null);
+	public List<Player> getAllPlayers() {
+		List <Player> playerList = new ArrayList<Player>(0);
+		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns, null, null, null, null, null);
 		
 		cursor.moveToFirst();
 		
 		while(!cursor.isAfterLast()) {
-			Team team = cursorToTeam(cursor);
-			teamList.add(team);
+			Player player = cursorToPlayer(cursor);
+			playerList.add(player);
 			cursor.moveToNext();
 		}
 
-		return teamList;
+		return playerList;
 		
 	}
 	
-	private Team cursorToTeam(Cursor cursor) {
+	private Player cursorToPlayer(Cursor cursor) {
 		
 		int id = cursor.getInt(0);
 		String name = cursor.getString(1);
-		String players = cursor.getString(2);
+		String team = cursor.getString(2);
+		//for all fields
 		
-		Team t = new Team();
+		Player p = new Player();
 		
-		t.setTeamId(id);
-		t.setName(name);
-		t.addPlayer(players);
-		
-		return t;		
+		p.setPlayerId(id);
+		//p.setName(name);
+				
+		return p;		
 	}
 	
-	public Team getTeamById(int id) {
+	public Player getPlayerById(int id) {
 		//Create a cursor
-		Cursor cursor = database.query(TeamsSQLiteHelper.TABLE_TEAMS, allColumns,
-				TeamsSQLiteHelper.COLUMN_ID + " = " + id, null, null, null, null);
-		return (cursor.moveToFirst()) ? cursorToTeam(cursor) : null;
+		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns,
+				PlayersSQLiteHelper.COLUMN_ID + " = " + id, null, null, null, null);
+		return (cursor.moveToFirst()) ? cursorToPlayer(cursor) : null;
 	}
 }
