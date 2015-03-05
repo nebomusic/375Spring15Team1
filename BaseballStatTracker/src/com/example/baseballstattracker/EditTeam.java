@@ -6,22 +6,27 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class EditTeam extends Activity {
 	private Spinner spinnerTeams;
 	private List<Team>teams;
 	private TeamList teamList;
+	private EditText editPlayer;
+	private PlayerList playerList;
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
 		setContentView(R.layout.activity_editteam);
 		
+		playerList = new PlayerList(this);
 		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
 		
 		//Spinner
@@ -68,10 +73,26 @@ public class EditTeam extends Activity {
 	}
 	
 	public void handleClick(View v) {
-		Intent intent = new Intent(this, MainActivity.class);
-		startActivity(intent);
+		switch(v.getId()){
+			case R.id.buttonStartGameBack:
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+			break;
+			case R.id.buttonAdd:
+			//addPlayer();
+			break;
+		}
 	}
 	
+	private void addPlayer() {
+		editPlayer = (EditText)findViewById(R.id.editTeam);
+		Player p = new Player();
+		p.setName(editPlayer.getText().toString());
+
+		Log.d("Test", "Test1");
+		Player newPlayer = playerList.createPlayer(p);
+	}
+
 	private void populateSpinnerTeams() {
 		//Create a list of strings
 		List<String>teamStrings = new ArrayList<String>(0);

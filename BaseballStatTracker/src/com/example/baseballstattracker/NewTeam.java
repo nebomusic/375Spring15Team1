@@ -55,8 +55,7 @@ public class NewTeam extends Activity {
 		editTeam = (EditText)findViewById(R.id.editTeam);
 		Team t = new Team();
 		t.setName(editTeam.getText().toString());
-		t.addPlayer("temp");
-		
+				
 		Team newTeam = teamList.createTeam(t);
 	}
 }

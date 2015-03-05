@@ -51,6 +51,8 @@ public class StartGame extends Activity {
 	private TextView textTeam;
 	private TextView textGameInfo;
 	private Spinner spinnerPlayer;
+	private List<Player>players;
+	private PlayerList playerList;
 	private ToggleButton toggleAddSub;
 	private Button buttonAB;
 	private int AB = 0;
@@ -375,7 +377,7 @@ public class StartGame extends Activity {
 				textStB = (TextView)findViewById(R.id.textStB);
 				if (isAdd){StB++;}
 				else{StB--;}
-				textStB.setText(String.valueOf(SB));
+				textStB.setText(String.valueOf(StB));
 				updateCalcStats();
 				updateStatList();
 			break;
@@ -553,12 +555,8 @@ public class StartGame extends Activity {
       	textGameInfo.setText(secondLine);
       	
       //In Game Player Spinner
-      spinnerPlayer = (Spinner)findViewById(R.id.spinnerPlayer);
-      				
-      ArrayAdapter<CharSequence> playerAdapter = ArrayAdapter.createFromResource(this, 
-      			R.array.player_array, android.R.layout.simple_spinner_dropdown_item); 
-      playerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-      spinnerPlayer.setAdapter(playerAdapter);
+      populateSpinnerPlayer();
+      
       spinnerPlayer.setOnItemSelectedListener(new OnItemSelectedListener()  {
   	   	@Override
   		public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -617,6 +615,27 @@ public class StartGame extends Activity {
       
 	}
 	
+	private void populateSpinnerPlayer() {
+		//Create a list of strings
+		List<String>playerStrings = new ArrayList<String>(0);
+			
+		players = playerList.getAllPlayers();
+			
+		for(int i = 0; i<players.size(); i++) {
+			playerStrings.add(players.get(i).getName());
+		}
+		
+		spinnerPlayer = (Spinner)findViewById(R.id.spinnerPlayer);
+			
+		ArrayAdapter<String>playerAdapter = 
+				new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerStrings);
+			
+		playerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			
+		spinnerPlayer.setAdapter(playerAdapter);
+		
+	}
+
 	private void populateSpinnerTeams() {
 		//Create a list of strings
 		List<String>teamStrings = new ArrayList<String>(0);

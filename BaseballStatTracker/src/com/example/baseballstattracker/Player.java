@@ -43,6 +43,10 @@ public class Player {
 	public void setPlayerId(int id) {
 		playerId = id;
 	}
+	public void setName(String n){
+		name = n;
+	}
+	
 	public void setTeam(String t){
 		team = t;
 	}
