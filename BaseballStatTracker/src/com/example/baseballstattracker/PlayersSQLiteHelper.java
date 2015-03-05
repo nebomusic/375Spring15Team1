@@ -10,7 +10,7 @@ public class PlayersSQLiteHelper extends SQLiteOpenHelper{
 	public static final String TABLE_PLAYERS = "players";
 	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_NAME = "name";
-	public static final String COLUMN_TEAM = "team";
+	public static final String COLUMN_PLAYERTEAM = "team";
 	public static final String COLUMN_ATBATS = "atbats";
 	public static final String COLUMN_BASEONE = "baseone";
 	public static final String COLUMN_BASETWO = "basetwo";
@@ -47,7 +47,7 @@ public class PlayersSQLiteHelper extends SQLiteOpenHelper{
 			+ TABLE_PLAYERS + "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_NAME + " text not null, "
-			+ COLUMN_TEAM + " text not null, "
+			+ COLUMN_PLAYERTEAM + " text not null, "
 			+ COLUMN_ATBATS + " text not null, "
 			+ COLUMN_BASEONE + " text not null, "
 			+ COLUMN_BASETWO + " text not null, "

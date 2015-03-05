@@ -152,6 +152,10 @@ public class StartGame extends Activity {
 		teams = new ArrayList<Team>(0);
 		teamList = new TeamList(this);
 		spinnerSelectTeam = (Spinner)findViewById(R.id.spinnerSelectTeam);
+		
+		players = new ArrayList<Player>(0);
+		playerList = new PlayerList(this);
+		spinnerPlayer = (Spinner)findViewById(R.id.spinnerPlayer);
 	
 		populateSpinnerTeams();
 		
@@ -633,7 +637,6 @@ public class StartGame extends Activity {
 		playerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			
 		spinnerPlayer.setAdapter(playerAdapter);
-		
 	}
 
 	private void populateSpinnerTeams() {

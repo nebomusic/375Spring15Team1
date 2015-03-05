@@ -79,7 +79,7 @@ public class EditTeam extends Activity {
 			startActivity(intent);
 			break;
 			case R.id.buttonAdd:
-			//addPlayer();
+			addPlayer();
 			break;
 		}
 	}

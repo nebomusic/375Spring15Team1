@@ -16,7 +16,7 @@ public class PlayersDAO {
 	private String[] allColumns = {
 			PlayersSQLiteHelper.COLUMN_ID,
 			PlayersSQLiteHelper.COLUMN_NAME,
-			PlayersSQLiteHelper.COLUMN_TEAM,
+			PlayersSQLiteHelper.COLUMN_PLAYERTEAM,
 			PlayersSQLiteHelper.COLUMN_ATBATS,
 			PlayersSQLiteHelper.COLUMN_BASEONE,
 			PlayersSQLiteHelper.COLUMN_BASETWO,
@@ -50,7 +50,6 @@ public class PlayersDAO {
 	}
 	
 	public void open() throws SQLException {
-		Log.d("Test", "Test3");
 		database = dbHelper.getWritableDatabase();
 	}
 	
@@ -63,7 +62,7 @@ public class PlayersDAO {
 		// Place t data into values object
 		// Handle boolean values
 		values.put(PlayersSQLiteHelper.COLUMN_NAME, p.getName());
-		values.put(PlayersSQLiteHelper.COLUMN_TEAM, p.getTeam());
+		values.put(PlayersSQLiteHelper.COLUMN_PLAYERTEAM, p.getTeam());
 		values.put(PlayersSQLiteHelper.COLUMN_ATBATS, p.getAtBats());
 		values.put(PlayersSQLiteHelper.COLUMN_BASEONE, p.getBaseOne());
 		values.put(PlayersSQLiteHelper.COLUMN_BASETWO, p.getBaseTwo());
@@ -114,7 +113,7 @@ public class PlayersDAO {
 		int id = p.getId();
 		
 		values.put(PlayersSQLiteHelper.COLUMN_NAME, p.getName());
-		values.put(PlayersSQLiteHelper.COLUMN_TEAM, p.getTeam());
+		values.put(PlayersSQLiteHelper.COLUMN_PLAYERTEAM, p.getTeam());
 		values.put(PlayersSQLiteHelper.COLUMN_ATBATS, p.getAtBats());
 		values.put(PlayersSQLiteHelper.COLUMN_BASEONE, p.getBaseOne());
 		values.put(PlayersSQLiteHelper.COLUMN_BASETWO, p.getBaseTwo());
@@ -198,7 +197,7 @@ public class PlayersDAO {
 		
 		Player p = new Player();
 		
-		//p.setPlayerId(id);
+		p.setPlayerId(id);
 		p.setName(name);
 		p.setTeam(team);
 		p.setAtBats(atbats);
