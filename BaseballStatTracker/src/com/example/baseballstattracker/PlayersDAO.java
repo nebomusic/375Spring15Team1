@@ -59,7 +59,7 @@ public class PlayersDAO {
 			
 	public Player createPlayer(Player p) {
 		ContentValues values = new ContentValues();
-		// Place t data into values object
+		// Place p data into values object
 		// Handle boolean values
 		values.put(PlayersSQLiteHelper.COLUMN_NAME, p.getName());
 		values.put(PlayersSQLiteHelper.COLUMN_PLAYERTEAM, p.getTeam());
@@ -91,9 +91,9 @@ public class PlayersDAO {
 		values.put(PlayersSQLiteHelper.COLUMN_SLUGGING, p.getSlugging());
 		values.put(PlayersSQLiteHelper.COLUMN_TIMESONBASE, p.getTimesOnBase());
 				
-		long insertId = database.insert(PlayersSQLiteHelper.TABLE_PLAYERS, null, values);
+		long insertId = database.insert(PlayersSQLiteHelper.TABLE_PLAYER, null, values);
 		
-		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns,
+		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYER, allColumns,
 										PlayersSQLiteHelper.COLUMN_ID + " = " + insertId , null, null, null, null);
 		cursor.moveToLast();
 		Player newPlayer = cursorToPlayer(cursor);
@@ -104,7 +104,7 @@ public class PlayersDAO {
 	
 	public void deletePlayer(Player p) {
 		int id = p.getId();
-		database.delete(PlayersSQLiteHelper.TABLE_PLAYERS,
+		database.delete(PlayersSQLiteHelper.TABLE_PLAYER,
 				PlayersSQLiteHelper.COLUMN_ID + " = " + id, null);
 	}
 	
@@ -142,13 +142,13 @@ public class PlayersDAO {
 		values.put(PlayersSQLiteHelper.COLUMN_SLUGGING, p.getSlugging());
 		values.put(PlayersSQLiteHelper.COLUMN_TIMESONBASE, p.getTimesOnBase());
 				
-		database.update(PlayersSQLiteHelper.TABLE_PLAYERS, values, PlayersSQLiteHelper.COLUMN_ID + " = " + id, null);
+		database.update(PlayersSQLiteHelper.TABLE_PLAYER, values, PlayersSQLiteHelper.COLUMN_ID + " = " + id, null);
 
 	}
 	
 	public List<Player> getAllPlayers() {
 		List <Player> playerList = new ArrayList<Player>(0);
-		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns, null, null, null, null, null);
+		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYER, allColumns, null, null, null, null, null);
 		
 		cursor.moveToFirst();
 		
@@ -233,7 +233,7 @@ public class PlayersDAO {
 	
 	public Player getPlayerById(int id) {
 		//Create a cursor
-		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYERS, allColumns,
+		Cursor cursor = database.query(PlayersSQLiteHelper.TABLE_PLAYER, allColumns,
 				PlayersSQLiteHelper.COLUMN_ID + " = " + id, null, null, null, null);
 		return (cursor.moveToFirst()) ? cursorToPlayer(cursor) : null;
 	}

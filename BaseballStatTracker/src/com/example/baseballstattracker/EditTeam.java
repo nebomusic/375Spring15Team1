@@ -26,6 +26,7 @@ public class EditTeam extends Activity {
 		super.onResume();
 		setContentView(R.layout.activity_editteam);
 		
+		editPlayer = (EditText)findViewById(R.id.editTeam);		
 		playerList = new PlayerList(this);
 		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
 		
@@ -42,6 +43,8 @@ public class EditTeam extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editteam);
 		
+		editPlayer = (EditText)findViewById(R.id.editTeam);		
+		playerList = new PlayerList(this);
 		spinnerTeams = (Spinner)findViewById(R.id.spinnerTeams);
 		
 		//Spinner
@@ -89,7 +92,6 @@ public class EditTeam extends Activity {
 		Player p = new Player();
 		p.setName(editPlayer.getText().toString());
 
-		Log.d("Test", "Test1");
 		Player newPlayer = playerList.createPlayer(p);
 	}
 

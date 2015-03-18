@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class PlayersSQLiteHelper extends SQLiteOpenHelper{
 
-	public static final String TABLE_PLAYERS = "players";
+	public static final String TABLE_PLAYER = "player";
 	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_NAME = "name";
 	public static final String COLUMN_PLAYERTEAM = "team";
@@ -40,11 +40,11 @@ public class PlayersSQLiteHelper extends SQLiteOpenHelper{
 	public static final String COLUMN_TIMESONBASE = "timesonbase";
 	
 	
-	public static final String DATABASE_NAME = "players.db";
+	public static final String DATABASE_NAME = "player.db";
 	public static final int DATABASE_VERSION = 1;
 	
 	private static final String DATABASE_CREATE = "create table "
-			+ TABLE_PLAYERS + "("
+			+ TABLE_PLAYER + "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_NAME + " text not null, "
 			+ COLUMN_PLAYERTEAM + " text not null, "
@@ -83,19 +83,15 @@ public class PlayersSQLiteHelper extends SQLiteOpenHelper{
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		Log.d("Test", "Test4");
 		db.execSQL(DATABASE_CREATE);
-		Log.d("Test", "Test6");
 	}
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.d("Test", "Test5");
 		Log.w(PlayersSQLiteHelper.class.getName(),
 				"Upgrading database from version " + oldVersion + " to " 
 				+ newVersion + ", which will destroy all old data");
-		db.execSQL("DROP TABLE IF EXISTS" + TABLE_PLAYERS);
+		db.execSQL("DROP TABLE IF EXISTS" + TABLE_PLAYER);
 		onCreate(db);
 	}
-	
 }

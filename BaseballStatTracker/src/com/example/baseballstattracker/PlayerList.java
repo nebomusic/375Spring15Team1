@@ -13,7 +13,6 @@ public class PlayerList {
 	public PlayerList(Context c) {
 		playerList = new ArrayList<Player>(0);
 		playersDataSource = new PlayersDAO(c);
-		Log.d("Test", "Test2");
 		playersDataSource.open();
 	}
 	
